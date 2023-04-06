@@ -7,36 +7,54 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView: View {
     @State private var messageString = "Yo!"
     
     var body: some View {
-        VStack {
-            Text(messageString)
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .minimumScaleFactor(0.5)
-                .multilineTextAlignment(.center)
-                .foregroundColor(.red)
-                .frame(height: 150)
-                .frame(maxWidth: .infinity)
-                .border(.orange, width: 1)
-                .padding()
-            
-            HStack {
-                Button("Awesome") {
-                    //  This is the action performed when the button is pressed
-                    messageString = "You Are Awesome!"
-                }
-                .buttonStyle(.borderedProminent)
+        ZStack {
+            Rectangle()
+                .fill(
+                    Gradient(colors: [Color("SkyBlue"), .indigo])
+                )
+                .ignoresSafeArea()
+            VStack {
+                Text("You Have Skills!")
+                    .font(.largeTitle)
+                    .fontWeight(.black)
+                    .foregroundColor(Color("Gold-BC"))
+                    .padding()
+                    .background(Color("Maroon-BC"))
+                    .cornerRadius(15)
+                Spacer()
+                Text(messageString)
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                    .minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.red)
+                    .frame(height: 150)
+                    .frame(maxWidth: .infinity)
+                    .border(.orange, width: 1)
+                    .padding()
                 
-                Button("Great") {
-                    //  This is the action performed when the button is pressed
-                    messageString = "You Are Great!"
+                Spacer()
+                
+                HStack {
+                    Button("Awesome") {
+                        //  This is the action performed when the button is pressed
+                        messageString = "You Are Awesome!"
+                    }
+                    .buttonStyle(.borderedProminent)
+                    Spacer()
+                    Button("Great") {
+                        //  This is the action performed when the button is pressed
+                        messageString = "You Are Great!"
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
-                .buttonStyle(.borderedProminent)
+    //            .border(.purple, width: 5)
+                .padding()
             }
-            .border(.purple, width: 5)
         }
     }
 }
