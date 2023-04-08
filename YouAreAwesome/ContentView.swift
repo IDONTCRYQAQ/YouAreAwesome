@@ -11,21 +11,10 @@ struct ContentView: View {
     @State private var messageString = "Yo!"
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(
-                    Gradient(colors: [Color("SkyBlue"), .indigo])
-                )
-                .ignoresSafeArea()
             VStack {
-                Text("You Have Skills!")
-                    .font(.largeTitle)
-                    .fontWeight(.black)
-                    .foregroundColor(Color("Gold-BC"))
-                    .padding()
-                    .background(Color("Maroon-BC"))
-                    .cornerRadius(15)
+                
                 Spacer()
+                
                 Text(messageString)
                     .font(.largeTitle)
                     .fontWeight(.heavy)
@@ -45,9 +34,10 @@ struct ContentView: View {
                         messageString = "You Are Awesome!"
                     }
                     .buttonStyle(.borderedProminent)
+                    
                     Spacer()
+                    
                     Button("Great") {
-                        //  This is the action performed when the button is pressed
                         messageString = "You Are Great!"
                     }
                     .buttonStyle(.borderedProminent)
@@ -57,7 +47,6 @@ struct ContentView: View {
             }
         }
     }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
