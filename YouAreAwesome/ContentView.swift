@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var messageString = ""
     @State private var imageName = ""
     @State private var imageNumber = 0
+    @State private var messageNumber = 0
     
     var body: some View {
         VStack {
@@ -22,6 +23,7 @@ struct ContentView: View {
                 .cornerRadius(30)
                 .shadow(radius: 30)
                 .padding()
+                .frame(height: 500)
             
             Spacer()
             
@@ -39,10 +41,15 @@ struct ContentView: View {
             
             
             Button("Show Message") {
-                let message1 = "You Are Awesome!"
-                let message2 = "You Are Great"
+                let messages = ["You Are Awesome!",
+                                "You Are Great",
+                                "You Are Fantastic!",
+                                "Fabulous? That's You!",
+                                "You Make Me Smile!",
+                                "When the Genius Bar Needs Help, They Call You!"]
                 
-                messageString = (messageString == message1 ? message2 : message1)
+                messageString = messages[messageNumber]
+                messageNumber = (messageNumber + 1) % 4
                 //TODO: - update the imageName vvariable -
                 imageName = "image\(imageNumber)"
                 print(imageName)
