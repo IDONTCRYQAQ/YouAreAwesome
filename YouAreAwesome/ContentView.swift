@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var messageString = ""
     @State private var imageName = ""
+    @State private var lastMessageNumber = -1
+    @State private var lastImageNumber = -1
     
     var body: some View {
         VStack {
@@ -37,7 +39,6 @@ struct ContentView: View {
             
             Spacer()
             
-            
             Button("Show Message") {
                 let messages = ["You Are Awesome!",
                                 "You Are Great",
@@ -46,9 +47,19 @@ struct ContentView: View {
                                 "You Make Me Smile!",
                                 "When the Genius Bar Needs Help, They Call You!"]
                 
-                messageString = messages[Int.random(in: 0..<messages.count)]
-                //TODO: - update the imageName vvariable -
-                imageName = "image\(Int.random(in: 0..<10))"
+                var messageNumber: Int
+                repeat {
+                    messageNumber = Int.random(in: 0..<messages.count)
+                } while messageNumber == lastMessageNumber
+                lastMessageNumber = messageNumber
+                messageString = messages[lastMessageNumber]
+                
+                var imageNumber: Int
+                repeat {
+                    imageNumber = Int.random(in: 0..<10)
+                } while imageNumber == lastImageNumber
+                lastImageNumber = imageNumber
+                imageName = "image\(lastImageNumber)"
             }
             .buttonStyle(.borderedProminent)
         }
